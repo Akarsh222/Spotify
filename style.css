@@ -6,6 +6,7 @@
 body{
     height: 100vh;
     background-color: #000000;
+    overflow: hidden;
 
 }
 
@@ -93,7 +94,7 @@ body{
         width: 0%;
     }
     to{
-        width: 110px;
+        width: 100%;
     }
 }
 
@@ -163,6 +164,24 @@ body{
     font-size: .8em;
     border-radius: 20px;
     font-weight: 700;
+    position: relative;
+}
+
+#playlist-button::after{
+    content: "";
+    height: 100%;
+    background-color: gray;
+    position: absolute;
+    opacity: .3;
+    top:0;
+    right:0;
+    border-radius: 30px;
+    transition: 1s ease;
+}
+
+#playlist-button:hover::after{
+    animation: colorSwoosh .7s;
+    animation-fill-mode: forwards;
 }
 
 .link-container{
@@ -203,37 +222,45 @@ body{
     font-family: Georgia, 'Times New Roman', Times, serif;  
 }
 
-#card-container{
+#card-container {
     background-color: transparent;
     height: 50vh;
     width: 70vw;
     margin: 100px 20px;
     overflow-y: scroll;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
 }
 
-.check{
-    margin-top: 10px;
-    margin-left: 30px;
+.check {
     height: 150px;
-    width: 250px;
+    width: 100%;
     background-color: green;
-    display: inline-block;
     border-radius: 10px;
     box-sizing: border-box;
+    transition: transform 0.2s ease;
 }
 
-.check h4{
+.check:hover {
+    transform: scale(1.02);
+}
+
+.check h4 {
     font-size: 1.5em;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: 500;
-    margin: 10px 0 0 10px;
+    margin: 10px;
     color: white;
-    width: 40%;
-    background-color: blue;
+    width: auto;
+    background-color: transparent;
 }
 
 #music{
-    background-color: #DC148C   ;
+    position: relative;
+    background-color: #DC148C;
+    overflow: hidden;
 }
 
 #podcasts{
@@ -259,4 +286,15 @@ body{
 
 #tamil, #telugu{
     background-color: #BA5D07;
+}
+
+#music img{
+    height: 120px;
+    width: 120px;
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    transform: rotate(30deg);
+    border: 3px solid white;
+    box-shadow: -8px 1px 20px black;
 }
